@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Ateliers: exercices de programmation</title>
+    <meta charset="utf-8">
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="container">
+      <a href="../index.html">Revenir à la page d'accueil</a>
+      <h1>Jeu de la vie</h1>
+      <h2>Implémentation d'un automate cellulaire simple</h2>
+      <p>
+        Le jeu de la vie est un automate extrèmement simple à implémenter (et
+        aussi un exercice très courant en programmation). Cela consiste à admettre
+        une matrice de longueur et de largeur variable composé de cellule soit
+        vivante, soit morte. S'en suit des règles de générations:
+        <ul>
+          <li>Si une cellule a exactement trois voisines vivantes, elle est vivante à l'étape suivante;</li>
+          <li>Si une cellule a exactement deux voisines vivantes, elle reste dans son état actuel à l’étape suivante;</li>
+          <li>Si une cellule a strictement moins de deux ou strictement plus de trois voisines vivantes, elle est morte à l’étape suivante.</li>
+        </ul>
+      </p>
+      <h4>Liens utiles</h4>
+      <ul>
+        <li><a href="https://fr.wikipedia.org/wiki/Jeu_de_la_vie">Page wikipedia (énonçant bien le problème)</a></li>
+      </ul>
+      <h3>Participations enregistrées</h3>
+      <ul>
+        <!-- <li> -->
+        <!--   <a href="#lien-de-la-participation"> -->
+        <!--     Titre de la participation -->
+        <!--   </a> -->
+        <!--   [Langages utilisés] -->
+        <!--   <strong>par </strong> -->
+        <!--   <a href="mailto:email?subject=A propos de votre participation à l'atelier">Auteur</a> <\!-- Email optionnel -\-> -->
+        <!-- </li> -->
+      </ul>
+
+
+      <!-- Commentaires -->
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES * * */
+        var disqus_shortname = 'atelierprog';
+        
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+      
+    </div>
+  </body>
+</html>
