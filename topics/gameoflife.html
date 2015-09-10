@@ -1,25 +1,38 @@
 <!doctype html>
 <html>
   <head>
-    <title>Ateliers: exercices de programmation</title>
+    <title>Ateliers : exercices de programmation</title>
     <meta charset="utf-8">
-    <link href="../style.css" rel="stylesheet" type="text/css">
+    <link href="/style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <div id="container">
-      <a href="../index.html">Revenir à la page d'accueil</a>
+      <a href="/">Revenir à la page d'accueil</a>
       <h1>Jeu de la vie</h1>
       <h2>Implémentation d'un automate cellulaire simple</h2>
       <p>
-        Le jeu de la vie est un automate extrèmement simple à implémenter (et
-        aussi un exercice très courant en programmation). Cela consiste à admettre
-        une matrice de longueur et de largeur variable composé de cellule soit
-        vivante, soit morte. S'en suit des règles de générations:
+        Le jeu de la vie est un automate simple, et aussi un exercice courant en programmation.
+        Sur un plateau de "cases", on a des "cellules" et des règles pour les faire naître, vivre et mourir.
+      </p>
+      
+      <h3>Les règles de John Conway</h3>
         <ul>
-          <li>Si une cellule a exactement trois voisines vivantes, elle est vivante à l'étape suivante;</li>
-          <li>Si une cellule a exactement deux voisines vivantes, elle reste dans son état actuel à l’étape suivante;</li>
-          <li>Si une cellule a strictement moins de deux ou strictement plus de trois voisines vivantes, elle est morte à l’étape suivante.</li>
+          <li>si une cellule a moins de deux voisines, elle mourra de solitude</a>
+          <li>si une cellule a plus de trois voisines, elle mourra de surpopulation</a>
+          <li>si une cellule a exactement deux ou trois voisines vivantes, elle survit jusqu'à la prochaine génération</li>
+          <li>si une "case vide" a exactement trois voisines vivantes, une cellule naîtra ici</li>
         </ul>
+
+      <h3>Un piège classique</h3>
+      <p>
+        Imaginons une "ligne" de dix cellules.
+        Selon les règles ci-dessus, les deux cellules des extrémités n'ont qu'une voisine et meurent.
+        Les huit cellules "du milieu" ont deux voisines et survivent.<br />
+        Une erreur classique est de "tuer" la cellule de gauche (la première que croise votre algo),
+        puis cette cellule étant "morte" la suivante n'a qu'une voisine vivante et meurt aussi,
+        et ainsi de suite... jusqu'à ce que toutes les cellules meurent au lieu de deux.<br />
+        Il faudra alors trouver une astuce pour bien séparer l'état de la génération N
+        de celui de la génération N+1, ou de ce qui "est déjà calculé" opposé à "ce qui reste à calculer".
       </p>
       <h4>Liens utiles</h4>
       <ul>
