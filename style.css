@@ -14,7 +14,7 @@ body {
 
 #container{
     width: 100%;
-    max-width: 800px;
+    max-width: 960px;
     margin: auto;
 }
 
@@ -53,4 +53,28 @@ ul.enumeration > li > a:hover {
 
 ul.enumeration > li > a:visited {
     color: #334D5C;
+}
+
+.topics {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.topics > div {
+    flex-grow:1;
+    width: 50%;
+    padding: 4px;
+}
+
+.topics > div > h4 {
+    text-align: center;
+}
+
+
+@media screen and (max-width: 800px) {
+    
+    .topics > div {
+        width: 100%;
+    }
+
 }
