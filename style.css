@@ -72,9 +72,15 @@ ul.enumeration > li > a:visited {
 
 
 @media screen and (max-width: 800px) {
+
+    .topics {
+        display:block;
+    }
     
     .topics > div {
         width: 100%;
+        display: block;
     }
+    
 
 }
