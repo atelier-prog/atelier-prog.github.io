@@ -3,40 +3,18 @@
 *::after {
     box-sizing: border-box;
 }
-@font-face {
-  font-family: 'PT Serif';
-  font-style: normal;
-  font-weight: 400;
-  src: local('PT Serif'), local('PTSerif-Regular'), url(http://fonts.gstatic.com/s/ptserif/v8/sDRi4fY9bOiJUbgq53yZCfesZW2xOQ-xsNqO47m55DA.woff) format('woff');
-}
-@font-face {
-  font-family: 'PT Serif';
-  font-style: normal;
-  font-weight: 700;
-  src: local('PT Serif Bold'), local('PTSerif-Bold'), url(http://fonts.gstatic.com/s/ptserif/v8/QABk9IxT-LFTJ_dQzv7xpIbN6UDyHWBl620a-IRfuBk.woff) format('woff');
-}
-@font-face {
-  font-family: 'PT Serif';
-  font-style: italic;
-  font-weight: 400;
-  src: local('PT Serif Italic'), local('PTSerif-Italic'), url(http://fonts.gstatic.com/s/ptserif/v8/03aPdn7fFF3H6ngCgAlQzBsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
-}
-@font-face {
-  font-family: 'PT Serif';
-  font-style: italic;
-  font-weight: 700;
-  src: local('PT Serif Bold Italic'), local('PTSerif-BoldItalic'), url(http://fonts.gstatic.com/s/ptserif/v8/Foydq9xJp--nfYIx2TBz9QFhaRv2pGgT5Kf0An0s4MM.woff) format('woff');
-}
+
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans:400,700);
 
 body {
-    font-family: 'PT Serif', serif;
+    font-family: 'Droid Sans', sans-serif;
     margin-bottom: 64px;
 }
 
 
 #container{
     width: 100%;
-    max-width: 800px;
+    max-width: 960px;
     margin: auto;
 }
 
@@ -51,4 +29,58 @@ h1 {
 
 h2 {
     margin-bottom: 24px;
+}
+
+ul.enumeration {
+    padding: 0;
+}
+
+ul.enumeration > li {
+    list-style-type:none;
+    background-color: #FAFAFA;
+    padding: 8px;
+    margin-bottom: 4px;
+}
+
+ul.enumeration > li > a {
+    color: #1A2530;
+    text-decoration: none;
+}
+
+ul.enumeration > li > a:hover {
+    color: #34495E;
+}
+
+ul.enumeration > li > a:visited {
+    color: #334D5C;
+}
+
+.topics {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.topics > div {
+    flex-grow:1;
+    width: 50%;
+    padding: 4px;
+}
+
+.topics > div > h4 {
+    text-align: center;
+}
+
+
+@media screen and (max-width: 800px) {
+
+    .topics {
+        display:block;
+    }
+    
+    .topics > div {
+        width: 100%;
+        display: block;
+    }
+    
+
 }

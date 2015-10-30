@@ -1,22 +1,28 @@
 <!doctype html>
 <html>
   <head>
-    <title>Ateliers: exercices de programmation</title>
+    <title>Ateliers : exercices de programmation</title>
     <meta charset="utf-8">
     <link href="../style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <div id="container">
       <a href="../index.html">Revenir à la page d'accueil</a>
-      <h1>Titre de l'énoncée</h1>
-      <h2>Sous titre de l'énoncée (optionnel)</h2>
+      <h1>Titre de l'énoncé</h1>
+      <h2>Sous-titre de l'énoncé (optionnel)</h2>
       <p>
-        Description exhaustive de l'énoncée. Vous pouvez utiliser
+        Description exhaustive de l'énoncé. Vous pouvez utiliser
         les balises de votre choix. En commençant l'utilisation des
-        titres à <strong>h3</strong>
+        titres à <strong>h3</strong>.
+      </p>
+      <p>
+        Pour un débutant, séparer l'objectif et proposer quelques pistes ou étapes clés peut aider.
+        De même, des liens de référence, car il est facile de se perdre dans le code ou les lectures.
+        Si vous le désirez, ajoutez dans votre contribution des fichiers HINTS.md pour proposer des astuces :
+        l'apprenant est ainsi encadré et peut chercher seul et regarder des astuces au besoin ou à la fin.
       </p>
       <h3>Participations enregistrées</h3>
-      <ul>
+      <ul class="enumeration">
         <li>
           <a href="#lien-de-la-participation">
             Titre de la participation
@@ -26,6 +32,22 @@
           <a href="mailto:email?subject=A propos de votre participation à l'atelier">Auteur</a> <!-- Email optionnel -->
         </li>
       </ul>
+
+
+      <!-- Commentaires -->
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES * * */
+        var disqus_shortname = 'atelierprog';
+        
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
     </div>
   </body>
 </html>
