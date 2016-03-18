@@ -1,0 +1,29 @@
+[
+
+    {
+        "name":"OCaml",
+        "desc":"An excellent language. Functional and imperative",
+        "site":"http://www.ocaml.org"
+    },
+    {
+        "name":"Haskell",
+        "desc":"An other excellent functionnal language",
+        "site":"http://www.haskell.org"
+    },
+    {
+        "name":"Ruby",
+        "desc":"A smart oriented object language",
+        "site":"https://www.ruby-lang.org"
+    },
+    {
+        "name":"F#",
+        "desc":"OCaml on .NET",
+        "site":"http://fsharp.org/"
+    },
+    {
+        "name":"Io",
+        "desc":"A small OO (prototyped) language",
+        "site":"http://iolanguage.org/"
+    }
+
+] 
