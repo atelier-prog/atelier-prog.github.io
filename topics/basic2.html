@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Ateliers : exercices de programmation</title>
+    <meta charset="utf-8">
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="container">
+      <a href="../index.html">Revenir à la page d'accueil</a>
+      <h1>MicroBasic 2</h1>
+      <h2>Votre deuxième langage de programmation</h2>
+      <p>
+        Dans cet exercice, on vous propose de réaliser un tout petit langage de programmation
+        qui ne traitera que des données numériques et des expressions booléennes. Voici
+        sa syntaxe :
+      </p>
+      <p>
+        Le programme exécute séquentiellement chaque ligne. Une ligne est soit : un entier  une expression, soit une expression. Quand le programme commence par un entier, c'est qu'il a un label. Voici la liste des expressions que le langage peut comprendre :
+        <ul>
+          <li>DISPLAY "texte" : affiche le texte à l'écran</li>
+          <li>DISPLAY X : affiche la variable X</li>
+          <li>GOTO N : va au label "N"</li>
+          <li>LET X := nombre ou expression booléenne : Attribue à la variable X le nombre ou le boolééen donné. Une variable ne peut être composé que d'un seul caractère en majuscule</li>
+          <li>IF (expr) THEN GOTO N : si l'expression donnée est "true", on va au label N, sinon, passe à la suivante</li>
+          <li>INPUT X : saisie utilisateur, si il ne saisit pas un entier le programme boucle sur la saisie d'entier</li>
+          <li>END : termine le programme</li>
+        </ul>
+      </p>
+
+      <h4>Un programme d'exemple</h4>
+
+      <u>Programme simple</u>
+      <pre>
+DISPLAY "Hello World"
+END
+      </pre>
+
+      <u>Es-tu majeur</u>
+      <pre>
+     DISPLAY "Quel est ton âge"
+     INPUT X
+     IF (X >= 18) THEN GOTO 2
+     DISPLAY "Tu es mineur !"
+     DISPLAY "Plus que:"
+     LET Y = 18 - X
+     DISPLAY Y
+     DISPLAY "Avant de pouvoir lire rentrer !"
+     END
+2    DISPLAY "Tu es majeur !"
+     END
+      </pre>
+
+
+      <h3>Participations enregistrées</h3>
+      <!-- <ul class="enumeration">
+           <li>
+           <a href="#lien-de-la-participation">
+           Titre de la participation
+           </a>
+           [Langages utilisés]
+           <strong>par </strong>
+           <a href="mailto:email?subject=A propos de votre participation à l'atelier">Auteur</a> 
+           </li>
+           </ul> -->
+
+
+      <!-- Commentaires -->
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES * * */
+        var disqus_shortname = 'atelierprog';
+        
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+  </body>
+</html>
