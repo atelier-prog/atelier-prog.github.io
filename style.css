@@ -70,6 +70,20 @@ ul.enumeration > li > a:visited {
     text-align: center;
 }
 
+.toc > li {
+  display: flex;
+  padding: 8px;
+}
+
+.toc > li > span {
+  flex: 0 0 75%;
+}
+
+.toc > li > a {
+  flex: 0 0 25%;
+  display: block;
+  text-align: center;
+}
 
 @media screen and (max-width: 800px) {
 
