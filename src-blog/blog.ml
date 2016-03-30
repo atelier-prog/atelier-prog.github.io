@@ -21,6 +21,15 @@ let window = Dom_html.window
 let alert m = window ## alert (String.js m)
 let log x = Firebug.console ## log(x)
 
+let anchors () =
+  Dom_html.window ## location ## hash
+  |> String.caml
+
+let set_anchor s =
+  Dom_html.window ## location ## hash <- (_s s)
+
+
+
 module Html =
 struct
 
@@ -139,6 +148,7 @@ struct
   ; email_base : string
   ; email_domain : string
   ; reference : string list
+  ; permalink : string
   } deriving (Yojson)
   type posts = t list deriving (Yojson)
   let ptl = Yojson.from_string<posts>
@@ -147,27 +157,37 @@ end
 
 include Post
 
+let find_by_hash posts =
+  let hash = anchors () in
+  try
+    Some (List.find (fun x -> ("#"^x.permalink) = hash) posts)
+  with _ -> None
+
+let retreive_post base post =
+  let _ = Html.remove_children base in
+  let _ = match Html.get_by_id "subtitle" with
+    | None -> ()
+    | Some subtitle ->
+      let title = post.title ^ ", par " ^ post.author in
+      let _ = Html.remove_children subtitle in
+      let _ = Dom.appendChild subtitle (String.txt title) in
+      let mdiv = Dom_html.createDiv doc in
+      let _ =
+        Ajax.load ("posts/" ^ post.url)
+        >>= ( function
+            | None -> alert "Failed to load document"; Lwt.return_unit
+            | Some content ->
+              let _ = Html.add_class mdiv "blogpost" in
+              let _ = mdiv ## innerHTML <- (_s content) in
+              Lwt.return_unit
+          ) in Dom.appendChild base mdiv
+  in ()
+
 let bind_event base post li =
   let open Lwt_js_events in
-  async_loop click li (fun a b ->
-      let _ = Html.remove_children base in
-      let _ = match Html.get_by_id "subtitle" with
-        | None -> ()
-        | Some subtitle ->
-          let title = post.title ^ ", par " ^ post.author in
-          let _ = Html.remove_children subtitle in
-          let _ = Dom.appendChild subtitle (String.txt title) in
-          let mdiv = Dom_html.createDiv doc in
-          let _ =
-            Ajax.load ("posts/" ^ post.url)
-            >>= ( function
-                | None -> alert "Failed to load document"; Lwt.return_unit
-                | Some content ->
-                  let _ = Html.add_class mdiv "blogpost" in
-                  let _ = mdiv ## innerHTML <- (_s content) in
-                  Lwt.return_unit
-              ) in Dom.appendChild base mdiv
-      in
+  async_loop click li (fun _ _ ->
+      let _ = retreive_post base post in
+      let _ = set_anchor post.permalink in
       Lwt.return_unit
     )
 
@@ -192,8 +212,9 @@ let perform_blog_post blogposts =
   | None, _ | _, None -> ()
   | Some ul, Some base ->
     let list = List.rev (Post.ptl blogposts) in
-    let _ = List.iter (a_post base ul) list in
-    ()
+    match find_by_hash list with
+    | Some pst -> retreive_post base pst
+    | _ -> List.iter (a_post base ul) list
 
 
 (* Initialization callback *)

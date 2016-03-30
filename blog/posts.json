@@ -6,14 +6,16 @@
         "author":"Nuki",
         "email_base":"xavier.vdw",
         "email_domain":"gmail.com",
-        "reference": ["blogstatic"]
+        "reference": ["blogstatic"],
+        "permalink":"nuki-intro"
     },
     {
         "url":"nuki-bf.html",
         "title":"Interprêter Brainfuck avec OCaml",
         "author":"Nuki",
-        "email_base":"xaviervdw",
+        "email_base":"altor.narthan",
         "email_domain":"gmail.com",
-        "reference": ["brainfuck"]
+        "reference": ["brainfuck"],
+        "permalink":"nuki-brainfuck"
     }
 ]
