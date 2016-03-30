@@ -152,10 +152,24 @@ end
 
 include Post
 
-let bind_event base li =
+let bind_event base post li =
   let open Lwt_js_events in
   async_loop click li (fun a b ->
       let _ = Html.remove_children base in
+      let _ = match Html.get_by_id "subtitle" with
+        | None -> ()
+        | Some subtitle ->
+          let title = post.title ^ ", par " ^ post.author in
+          let _ = Html.remove_children subtitle in
+          let _ = Dom.appendChild subtitle (String.txt title) in
+          let mdiv = Dom_html.createDiv doc in
+          let _ =
+            Ajax.load post.url
+            >>= ( function
+                | None -> alert "Failed to load document"; Lwt.return_unit
+                | Some content -> log content; Lwt.return_unit
+              ) in Dom.appendChild base mdiv
+      in
       Lwt.return_unit
     )
 
@@ -172,7 +186,7 @@ let a_post base ul post =
   let _ = Dom.appendChild mdiv (String.txt ("Posté par "^post.author)) in
   let _ = Dom.appendChild li img in
   let _ = Dom.appendChild li mdiv in
-  let _ = bind_event base li in
+  let _ = bind_event base post li in
   Dom.appendChild ul li
 
 let perform_blog_post blogposts =
