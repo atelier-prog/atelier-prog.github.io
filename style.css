@@ -137,6 +137,21 @@ ul.enumeration > li > a:visited {
   margin: 0;
 }
 
+.blogpost h1,
+.blogpost h2,
+.blogpost h3,
+.blogpost h4,
+.blogpost h5,
+.blogpost h6
+{
+  text-align: left;
+}
+
+.blogpost p {
+  text-indent: 50px;
+  text-align: justify;
+}
+
 @media screen and (max-width: 800px) {
 
     .topics {

@@ -8,8 +8,9 @@ JSOO=$(FIND) $(JSDEP)
 
 .PHONY: all blog
 
+all: blog test
 
-all: blog
+test:
 	python -m SimpleHTTPServer 7777
 
 blog:

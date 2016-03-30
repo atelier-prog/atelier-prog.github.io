@@ -89,6 +89,11 @@ struct
         let _ = node ## removeChild(child) in iter node
     in iter fnode
 
+  let add_class elt klass = elt ## classList ## add (_s klass)
+  let add_classes elt classes = List.iter (add_class elt) classes
+  let remove_class elt klass =  elt ## classList ## remove (_s klass)
+  let remove_classes elt classes = List.iter (remove_class elt) classes
+
 end
 
 module Ajax =
@@ -122,16 +127,6 @@ struct
       "identicon")
     |> String.js
 
-  (* let substitue () = *)
-  (*   let img = Html.select doc "img" in *)
-  (*   List.iter *)
-  (*     (fun i -> *)
-  (*        let ig = Html.to_img i in *)
-  (*        match (Html.get_data ig "avatar") with *)
-  (*        | None -> () *)
-  (*        | Some x -> ig ## src <- (uri_for x) *)
-  (*     img *)
-
 end
 
 
@@ -164,10 +159,13 @@ let bind_event base post li =
           let _ = Dom.appendChild subtitle (String.txt title) in
           let mdiv = Dom_html.createDiv doc in
           let _ =
-            Ajax.load post.url
+            Ajax.load ("posts/" ^ post.url)
             >>= ( function
                 | None -> alert "Failed to load document"; Lwt.return_unit
-                | Some content -> log content; Lwt.return_unit
+                | Some content ->
+                  let _ = Html.add_class mdiv "blogpost" in
+                  let _ = mdiv ## innerHTML <- (_s content) in
+                  Lwt.return_unit
               ) in Dom.appendChild base mdiv
       in
       Lwt.return_unit
@@ -193,7 +191,7 @@ let perform_blog_post blogposts =
   match (Html.get_by_id "content-blog", Html.get_by_id "full-content") with
   | None, _ | _, None -> ()
   | Some ul, Some base ->
-    let list = Post.ptl blogposts in
+    let list = List.rev (Post.ptl blogposts) in
     let _ = List.iter (a_post base ul) list in
     ()
 
