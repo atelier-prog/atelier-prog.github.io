@@ -85,6 +85,34 @@ ul.enumeration > li > a:visited {
   text-align: center;
 }
 
+#content-blog  {
+  padding: 0;
+  margin: 0;
+}
+
+#content-blog > li {
+  padding: 32px 0px 0px 0px;
+  margin: 0;
+  list-style-type:none; 
+  display: flex;
+  cursor: pointer;
+}
+
+/* #content-blog > li > * { */
+/*     flex: 0 0 50%; */
+/* } */
+
+#content-blog > li > img {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+#content-blog h3 {
+  margin: 0;
+}
+
 @media screen and (max-width: 800px) {
 
     .topics {

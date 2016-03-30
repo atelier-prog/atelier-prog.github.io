@@ -7,6 +7,9 @@ struct
   let caml = Js.to_string
   let js = Js.string
 
+  let txt v =
+    Dom_html.document ## createTextNode (js v)
+
 end
 
 let _s = String.js
@@ -16,6 +19,7 @@ let s_ = String.caml
 let doc = Dom_html.document
 let window = Dom_html.window
 let alert m = window ## alert (String.js m)
+let log x = Firebug.console ## log(x)
 
 module Html =
 struct
@@ -72,6 +76,21 @@ struct
 
 end
 
+module Ajax =
+struct
+
+  let load file =
+  let open XmlHttpRequest in
+  get file >>= (fun frame ->
+      let code = frame.code
+      and message = frame.content in
+      if code = 0 || code = 200
+      then Lwt.return (Some message)
+      else Lwt.return None
+    )
+
+end
+
 module Gravatar =
 struct
 
@@ -81,29 +100,80 @@ struct
 
   let uri_for ?(dim=100) email =
     let md5_email = md5 email in
-    Printf.sprintf
+    (Printf.sprintf
       "http://www.gravatar.com/avatar/%s?s=%d&d=%s"
       md5_email
       dim
-      "identicon"
+      "identicon")
+    |> String.js
 
-  let substitue () =
-    let img = Html.select doc "img" in
-    List.iter
-      (fun i ->
-         let ig = Html.to_img i in
-         match (Html.get_data ig "avatar") with
-         | None -> ()
-         | Some x -> ig ## src <- (_s (uri_for x))
-      )
-      img
+  (* let substitue () = *)
+  (*   let img = Html.select doc "img" in *)
+  (*   List.iter *)
+  (*     (fun i -> *)
+  (*        let ig = Html.to_img i in *)
+  (*        match (Html.get_data ig "avatar") with *)
+  (*        | None -> () *)
+  (*        | Some x -> ig ## src <- (uri_for x) *)
+  (*     img *)
 
 end
 
 
+module Post =
+struct
+  type t = {
+    url : string
+  ; title : string
+  ; author : string
+  ; email_base : string
+  ; email_domain : string
+  ; reference : string list
+  } deriving (Yojson)
+  type posts = t list deriving (Yojson)
+  let ptl = Yojson.from_string<posts>
+
+end
+
+include Post
+
+let a_post ul post =
+  let email = post.email_base ^ "@" ^ post.email_domain in
+  let img = Dom_html.createImg doc in
+  let _ = img ## src <- (Gravatar.uri_for email) in
+  let li = Dom_html.createLi doc in
+  let h3 = Dom_html.createH3 doc in
+  let _ = Dom.appendChild h3 (String.txt post.title) in
+  let mdiv = Dom_html.createDiv doc in
+  let _ = Dom.appendChild mdiv h3 in
+  let _ = Dom.appendChild mdiv (String.txt ("Posté par "^post.author)) in
+  let _ = Dom.appendChild li img in
+  let _ = Dom.appendChild li mdiv in
+  Dom.appendChild ul li
+
+let perform_blog_post blogposts =
+  match Html.get_by_id "content-blog" with
+  | None -> ()
+  | Some ul ->
+    let list = Post.ptl blogposts in
+    let _ = List.iter (fun x -> a_post ul x) list in
+    ()
+
+
 (* Initialization callback *)
 let initialize () =
-  let _ = Gravatar.substitue () in
+  let _ =
+    Ajax.load "posts.json"
+    >>= (fun x ->
+        let _ = match x with
+          | Some ms ->
+            perform_blog_post ms
+          | None -> alert "Failed to load blog post list"
+        in
+        Lwt.return_unit
+      )
+
+  in
   Lwt.return ()
 
 (* General promise *)

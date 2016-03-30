@@ -1,0 +1,18 @@
+[
+    {
+        "url":"nuki-intro.html",
+        "title":"Introduction au blog d'atelier-prog",
+        "author":"Nuki",
+        "email_base":"xavier.vdw",
+        "email_domain":"gmail.com",
+        "reference": ["blogstatic"]
+    },
+    {
+        "url":"nuki-bf.html",
+        "title":"Interprêter Brainfuck avec OCaml",
+        "author":"Nuki",
+        "email_base":"xaviervdw",
+        "email_domain":"gmail.com",
+        "reference": ["brainfuck"]
+    }
+]
