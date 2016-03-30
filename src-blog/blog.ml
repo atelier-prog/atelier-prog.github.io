@@ -74,6 +74,21 @@ struct
     Dom_html.CoerceTo.img x
     |> unopt
 
+  let iter_children f node =
+    let nodeL = node ## childNodes in
+    let len = nodeL ## length in
+    for i = 0 to (pred len) do
+      Js.Opt.iter (nodeL ## item(i)) f
+    done
+
+  let remove_children fnode =
+    let rec iter node =
+      match Js.Opt.to_option (node ## firstChild) with
+      | None -> ()
+      | Some child ->
+        let _ = node ## removeChild(child) in iter node
+    in iter fnode
+
 end
 
 module Ajax =
@@ -137,7 +152,15 @@ end
 
 include Post
 
-let a_post ul post =
+let bind_event base li =
+  let open Lwt_js_events in
+  async_loop click li (fun a b ->
+      let _ = Html.remove_children base in
+      Lwt.return_unit
+    )
+
+
+let a_post base ul post =
   let email = post.email_base ^ "@" ^ post.email_domain in
   let img = Dom_html.createImg doc in
   let _ = img ## src <- (Gravatar.uri_for email) in
@@ -149,14 +172,15 @@ let a_post ul post =
   let _ = Dom.appendChild mdiv (String.txt ("Posté par "^post.author)) in
   let _ = Dom.appendChild li img in
   let _ = Dom.appendChild li mdiv in
+  let _ = bind_event base li in
   Dom.appendChild ul li
 
 let perform_blog_post blogposts =
-  match Html.get_by_id "content-blog" with
-  | None -> ()
-  | Some ul ->
+  match (Html.get_by_id "content-blog", Html.get_by_id "full-content") with
+  | None, _ | _, None -> ()
+  | Some ul, Some base ->
     let list = Post.ptl blogposts in
-    let _ = List.iter (fun x -> a_post ul x) list in
+    let _ = List.iter (a_post base ul) list in
     ()
 
 
