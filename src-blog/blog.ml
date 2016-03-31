@@ -1,5 +1,7 @@
 let ( >>= ) = Lwt.bind
 
+
+
 module String =
 struct
 
@@ -27,7 +29,6 @@ let anchors () =
 
 let set_anchor s =
   Dom_html.window ## location ## hash <- (_s s)
-
 
 
 module Html =
@@ -64,7 +65,6 @@ struct
         |> s_
       )
     else None
-
 
   let set_attribute elt attr value =
     let s_attr = _s attr
@@ -180,7 +180,8 @@ let retreive_post base post =
               let _ = Html.add_class mdiv "blogpost" in
               let _ = mdiv ## innerHTML <- (_s content) in
               Lwt.return_unit
-          ) in Dom.appendChild base mdiv
+          )
+      in Dom.appendChild base mdiv
   in ()
 
 let bind_event base post li =
