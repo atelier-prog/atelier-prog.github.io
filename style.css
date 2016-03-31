@@ -7,8 +7,9 @@
 @import url(https://fonts.googleapis.com/css?family=Droid+Sans:400,700);
 
 body {
-    font-family: 'Droid Sans', sans-serif;
-    margin-bottom: 64px;
+  font-family: 'Droid Sans', sans-serif;
+  font-weight: 100;
+  margin-bottom: 64px;
 }
 
 
@@ -91,6 +92,10 @@ ul.enumeration > li > a:visited {
   display: flex;
    min-height: 100vh;
   flex-direction: column;
+}
+
+h1 {
+  margin-top: 32px;
 }
 
 #container {
