@@ -181,6 +181,13 @@ h1 {
   line-height: 1.8em;
 }
 
+pre {
+  background-color: black;
+  color: yellow;
+  padding: 6px;
+  margin: 24px;
+}
+
 @media screen and (max-width: 800px) {
 
     .topics {

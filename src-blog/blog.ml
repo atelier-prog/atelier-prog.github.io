@@ -114,7 +114,7 @@ struct
   let ( <|> ) e p =
     (prepend e p)
     |> ignore
-    
+
   let ( <+> ) e p =
     (append e p)
     |> ignore
@@ -173,6 +173,14 @@ end
 
 include Post
 
+let hls =
+  let hl = Dom_html.createScript doc in
+  let tx = "hljs.initHighlightingOnLoad();" in
+  let _  = Html.(hl <+> (String.txt tx)) in
+  hl
+
+let hljs = (Js.Unsafe.js_expr "hljs")
+
 let find_by_hash posts =
   let hash = anchors () in
   try
@@ -186,12 +194,12 @@ let retreive_post base post =
     | Some subtitle ->
       let bt = Dom_html.createA doc in
       let _  = bt ## href <- (_s "index.html") in
-      let _  = Dom.appendChild bt (String.txt "Retourner à l'index") in
-      let p  = (base ## parentNode) |> Html.unopt in
-      let _  = Dom.appendChild p bt in
+      let _  = Html.add_class bt "std-button" in
+      let p  = base ## parentNode |> Html.unopt in
+      let _  = Html.(bt <+> (String.txt "Retourner à l'index")) in
+      let _  = Html.(bt <|> p)  in
       let title = post.title ^ ", par " ^ post.author in
       let _  = Html.remove_children subtitle in
-      let _  = Dom.appendChild subtitle (String.txt title) in
       let mdiv = Dom_html.createDiv doc in
       let _ =
         Ajax.load ("posts/" ^ post.url)
@@ -200,6 +208,8 @@ let retreive_post base post =
             | Some content ->
               let _  = Html.add_class mdiv "blogpost" in
               let _  = mdiv ## innerHTML <- (_s content) in
+              let _  = Html.(subtitle <+> (String.txt title)) in
+              let _  = Html.(p <+> hls) in
               Lwt.return_unit
           )
       in Dom.appendChild base mdiv
