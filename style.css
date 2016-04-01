@@ -41,20 +41,21 @@ ul.enumeration > li {
     background-color: #FAFAFA;
     padding: 8px;
     margin-bottom: 4px;
+    border-radius: 4px;
 }
 
-ul.enumeration > li > a {
-    color: #1A2530;
-    text-decoration: none;
-}
+/* ul.enumeration > li > a { */
+/*     color: #880000; */
+/*     text-decoration: none; */
+/* } */
 
-ul.enumeration > li > a:hover {
-    color: #34495E;
-}
+/* ul.enumeration > li > a:hover { */
+/*     color: #34495E; */
+/* } */
 
-ul.enumeration > li > a:visited {
-    color: #334D5C;
-}
+/* ul.enumeration > li > a:visited { */
+/*     color: #990000; */
+/* } */
 
 .topics {
     display: flex;
