@@ -103,6 +103,22 @@ struct
   let remove_class elt klass =  elt ## classList ## remove (_s klass)
   let remove_classes elt classes = List.iter (remove_class elt) classes
 
+  let prepend elt parent =
+  let _ = Dom.insertBefore parent elt (parent ## firstChild) in
+  elt
+
+  let append parent elt =
+    let _ = Dom.appendChild parent elt  in
+    parent
+
+  let ( <|> ) e p =
+    (prepend e p)
+    |> ignore
+    
+  let ( <+> ) e p =
+    (append e p)
+    |> ignore
+
 end
 
 module Ajax =
