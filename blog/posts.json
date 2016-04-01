@@ -4,18 +4,9 @@
         "url":"nuki-intro.html",
         "title":"Introduction au blog d'atelier-prog",
         "author":"Nuki",
-        "email_base":"xavier.vdw",
+        "email_base":"xaviervdw",
         "email_domain":"gmail.com",
         "reference": ["blogstatic"],
         "permalink":"nuki-intro"
-    },
-    {
-        "url":"nuki-bf.html",
-        "title":"Interprêter Brainfuck avec OCaml",
-        "author":"Nuki",
-        "email_base":"altor.narthan",
-        "email_domain":"gmail.com",
-        "reference": ["brainfuck"],
-        "permalink":"nuki-brainfuck"
     }
 ]
