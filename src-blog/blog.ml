@@ -173,6 +173,34 @@ end
 
 include Post
 
+
+let disqus permalink =
+  let url = Printf.sprintf "http://atelier-prog.github.io/blog/index.html#%s" permalink in
+  let general = Dom_html.createDiv doc in
+  let thread = Dom_html.createDiv doc in
+  let _ = Html.set_attribute thread "id" "disqus_thread" in
+  let script = Dom_html.createScript doc in
+  let ctn = Printf.sprintf
+      "var disqus_config = function () {
+this.page.url = '%s'; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = '%s'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//atelierprog.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();" url permalink in
+  let _ = Html.append script (String.txt ctn) in
+  let noscript = Dom_html.createNoscript doc in
+  let _ = Html.append noscript (String.txt "Please enable JavaScript to see this blog") in
+  let _ = Html.append general thread in
+  let _ = Html.append general script in
+  let _ = Html.append general noscript in
+  general
+
 let hls =
   let hl = Dom_html.createScript doc in
   let tx = "hljs.initHighlightingOnLoad();" in
@@ -209,7 +237,7 @@ let retreive_post base post =
               let _  = Html.add_class mdiv "blogpost" in
               let _  = mdiv ## innerHTML <- (_s content) in
               let _  = Html.(subtitle <+> (String.txt title)) in
-              let _  = Html.(p <+> hls) in
+              let _  = Html.(mdiv <+> (disqus post.permalink)) in
               Lwt.return_unit
           )
       in Dom.appendChild base mdiv
