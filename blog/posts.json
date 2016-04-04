@@ -8,14 +8,5 @@
         "email_domain":"gmail.com",
         "reference": ["blogstatic"],
         "permalink":"nuki-intro"
-    },
-       {
-        "url":"nuki-intro.html",
-        "title":"Introduction au blog d'atelier-prog2",
-        "author":"Nuki",
-        "email_base":"xaviervdw",
-        "email_domain":"gmail.com",
-        "reference": ["blogstatic"],
-        "permalink":"nuki-intro222"
     }
 ]

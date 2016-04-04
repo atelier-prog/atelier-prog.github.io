@@ -2,17 +2,135 @@
   Atelier-prog est une petite communauté (tristement) peu fréquentée. Cependant, il existe
   tout de même une série de contributeurs que je remercie fortemment ! La proposition
   d'exercice est une chose, mais nous avons décidé qu'un suivi "un peu plus rédigé" que la
-  publication d'une soltuion serait un plus pour notre communauté ! 
+  publication d'une solution serait un plus pour notre communauté ! 
   <br />
   Comme pour la page atelier, il s'agit d'un espace de publication collaboratif. Chacun est
   libre d'y apporter sa contribution ! L'objectif de cet article est de présenter comment
   ajouter votre article.
 </p>
 
+<p>
+  Actuellement, ce blog est encore en construction. En effet, la colorisation syntaxique
+  n'est pas encore réellement fonctionnelle, et les commentaires fonctionnent mal. Si vous
+  êtes à l'aise avec JavaScript et OCaml, n'hésitez pas à contribuer au code pour rendre tout
+  ça fonctionnel !
+</p>
+
 <h2>Rédaction</h2>
+
+<p>
+  La rédaction d'un article est assez simple, il suffit de créer une page HTML du nom de votre
+  choix dans le répertoire <a href="https://github.com/atelier-prog/atelier-prog.github.io/tree/master/blog/posts">
+  /blog/posts/</a>. Idéalement, essayez de préfixer le nom du fichier par votre pseudonyme
+  pour s'y retrouver facilement et éviter les collisions. Le choix d'utiliser du HTML pour
+  écrire les articles est principalement pour permettre à tout le monde d'être totalement
+  libre dans son format de mise en page. Cependant, comme dirait "Oncle Ben" dans Spiderman,
+  un grand pouvoir implique de grande responsabilités et on vous demandera donc de ne pas
+  abuser en plaçant du JavaScript random un peu partout. Idéalement, essayez de respecter
+  la sémantique du Html, donc de titrer avec des balises <code>h2, h3, h4</code> et de bien
+  utiliser des balises <code>p</code> pour structurer votre document !<br />
+  N'hésitez pas à vous inspirer de <a href="https://github.com/atelier-prog/atelier-prog.github.io/blob/master/blog/posts/nuki-intro.html">cet article</a>
+  pour mettre en page le vôtre.
+</p>
+
+<p>
+  On déconseille de modifier le CSS pour le plaisir d'un seul article, cependant, si vous
+  estimez qu'une modification utile doit être mise en place, n'hésitez pas à le faire au
+  moyen d'une PullRequest en motivant clairement votre choix, ou alors de m'en parler par
+  les différents canaux de communications qui sont à votre disposition pour discuter avec moi!
+</p>
+
+<p>
+  Les commentaires n'étant pas encore accessibles, n'hésitez pas à terminer votre article en
+  proposant votre adresse courriel (en éviter d'écrire @, pour ne pas tenter les spammers) pour
+  permettre à des gens de vous envoyer des courriels. Cependant, les commentaires devraient
+  apparaître dans un futur proche !
+</p>
+
 
 <h2>Publication</h2>
 
-<h2>Déploiement</h2>
+<p>
+  Une fois que votre article est rédigé, il va falloir modifier le fichier
+  <a href="https://github.com/atelier-prog/atelier-prog.github.io/blob/master/blog/posts.json">posts.json</a>
+  qui est la base de données de tous les articles. 
+</p>
+
+<pre><code>
+[
+
+    {
+        "url":"nuki-intro.html",
+        "title":"Introduction au blog d'atelier-prog",
+        "author":"Nuki",
+        "email_base":"xaviervdw",
+        "email_domain":"gmail.com",
+        "reference": ["blogstatic"],
+        "permalink":"nuki-intro"
+    },
+    {
+        "url":"FICHIER HTML POUR VOTRE ARTICLE",
+        "title":"TITRE EXPLICITE DE VOTRE ARTICLE",
+        "author":"PSEUDONYME",
+        "email_base":"CE QU'IL Y A AVANT LE AROBAZ POUR VOTRE ADRESSE MAIL",
+        "email_domain":"CE QU'IL Y A APRES LE AROBAZ POUR VOTRE ADRESSE MAIL",
+        "reference": ["UN ATELIER REFERENCE PAR LE BLOG POST"],
+        "permalink":"UN IDENTIFIANT UNIQUE"
+    }
+]
+</code></pre>
+
+<p>
+  Pour ne pas intégrer de logique de date complexe à implémenter, le système de blog
+  suppose que les derniers articles sont les derniers chronologiquement. N'oubliez pas de
+  rajouter une virgule entre le dernier article et le votre. Si l'email est fragmenté en deux
+  partie, c'est pour eviter que des robots voient votre email en dur sur le fichier. Votre
+  adresse email n'est pas affichée sur le blog, elle permet juste de récuperer votre
+  avatar via le site <a href="https://fr.gravatar.com/">Gravatar</a>. <br />
+  Attention, tous les champs doivent être renseignés. Le champ permalink doit aussi impérativement
+  être unique. C'est lui qui permettra de "router" les pages.
+</p>
+
+<p>
+  Une fois que votre article est bien rédigé et ajouté à la base de données, vous pouvez
+  tester, si vous êtes sous MacOS ou Linux (je n'ai pas testé sur Windows), en lancant, à la
+  racine du projet, la commande <code>make test</code>, ça démarera un serveur sur le port
+  7777 pour tester le projet en vous rendant à l'adresse http://localhost:7777
+  Attention, parfois il faudra
+  recharger votre cache pour que les mises à jours soient bien prises en compte !
+</p>
+
+<p>
+  Une fois que vous avez pu vérifier que votre article fonctionnait bien, il suffit de
+  commiter vos mises à jours et d'effectuer une "pullRequest" sur le dépôt original. Une fois
+  que votre PullRequest sera validée, l'article sera en ligne.
+</p>
+
+<h2>Fonctionnement du blog</h2>
+
+<p>
+  Il ne s'agit pas d'un blog statique à proprement parlé. En effet, il ne s'agit que d'un
+  fichier écrit en OCaml (et généré en JavaScript) qui lit la "base de données d'articles",
+  le fichier Json, et construit la liste d'articles. C'est une méthode qui est peu flexible
+  mais qui permet de ne pas obliger les utilisateurs à installer la technologie nécéssaire à
+  compiler l'application web pour le déploiement.
+</p>
 
 <h2>Conclusion</h2>
+
+<p>
+  Il reste encore beaucoup de travail, malgré le fait que ce système de blog soit tout de même
+  utilisable, en voici une petite liste (surement peu exhaustive) :
+</p>
+  <ul>
+    <li>Fixer les soucis de colorisation syntaxique</li>
+    <li>Intégrer des commentaires</li>
+    <li>Référencer les blog posts dans les pages des ateliers</li>
+  </ul>
+  <p>
+  Et il faut reconnaitre que cet mise en place aura soulevé de gros points faibles liés
+  aux choix initiaux de Atelier-prog. Une conversation devrait être mise en place incessemment
+  sous peu pour éventuellement choisir une direction plus ergonomique, et garantissant une
+  certaine péreinité pour le futur ! <br/>
+  Merci pour votre lecture et vos éventuelles participations !
+</p>
