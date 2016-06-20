@@ -5,7 +5,12 @@
     <meta charset="utf-8">
     <link href="style.css" rel="stylesheet" type="text/css">
   </head>
-  <body>
+  <body class="page-layout"">
+    <div class="header">
+      <a href="index.html">Liste des ateliers</a>
+      <a href="blog/index.html">Blog</a>
+      <a href="contribute.html">Contribuer</a>
+    </div>
     <div id="container">
       <h1>Ateliers</h1>
       <h2>Exercices de programmation</h2>
@@ -23,10 +28,35 @@
       une catégorie, qu'il est impossible d'imaginer une solution qui ne rentre
       pas tout à fait dans la catégorie. (Par exemple une solution logicielle
       peut répondre à une problématique web et inversément).
+
+
+      <ul class="toc">
+        <li>
+          <a href="blog/index.html">Blog</a>
+          <span>Carnet de route des participants</span>
+        </li>
+        <li>
+          <a href="#initiation">Initiation</a>
+          <span>Exercices d'initiation à des disciplines variées.</span>
+        </li>
+        <li>
+          <a href="#logiciels">Logiciels</a>
+          <span>Exercices liés à l'implémentation concrète de logiciels.</span>
+        </li>
+        <li>
+          <a href="#jeux-videos">Jeux-vidéos</a>
+          <span>Exercices liés à la création de jeux-vidéos.</span>
+        </li>
+        <li>
+          <a href="#web">Web</a>
+          <span>Exercices liés à l'implémentation d'applications web.</span>
+        </li>
+      </ul>
+
       <div class="topics">
 
         <div>
-          <h4>Initiation</h4>
+          <h4 id="initiation">Initiation</h4>
           <ul class="enumeration">
             <li>
               <a href="topics/charcount.html">
@@ -75,24 +105,44 @@
             </li>
           </ul>
 
-
-          <h4>Logiciels</h4>
+          <h4 id="jeux-videos">Jeux-vidéos</h4>
           <ul class="enumeration">
+
             <li>
-              <a href="topics/diff.html">
-                Créer un comparateur de document textuels
+              <a href="topics/shifumi.html">
+                Implémenter un pierre-feuille-ciseaux
               </a>
             </li>
+
             <li>
-              <a href="topics/diffimg.html">
-                Créer un comparateur d'images
+              <a href="topics/grid.html">
+                Créer un système de déplacement dans une grille
               </a>
             </li>
-          </ul>
 
+            <li>
+              <a href="topics/dungeon.html">
+                Donjon généré procéduralement
+              </a>
+            </li>
 
-          <h4>Jeux-vidéos</h4>
-          <ul class="enumeration">
+            <li>
+              <a href="topics/spacewar.html">
+                Implémentation de SpaceWar
+              </a>
+            </li>
+
+            <li>
+              <a href="topics/snake.html">
+                Le jeu du serpent (nokia 32/33 10 for ever)
+              </a>
+            </li>
+
+            <!-- <li>
+                 <a href="topics/platforme.html">
+                 Un petit jeu de plate-forme
+                 </a>
+                 </li> -->
 
             <li>
               <a href="topics/chip8.html">
@@ -101,8 +151,8 @@
             </li>
 
             <li>
-              <a href="topics/grid.html">
-                Créer un système de déplacement dans une grille
+              <a href="topics/shifumi2.html">
+                Implémenter un pierre-feuille-ciseaux réseau
               </a>
             </li>
 
@@ -118,7 +168,7 @@
 
         <div>
 
-          <h4>Web</h4>
+          <h4 id="web">Web</h4>
           <ul class="enumeration">
 
             <li><strong>Initiation au web</strong></li>
@@ -205,7 +255,23 @@
 
           </ul>
 
+          <h4 id="logiciels">Logiciels</h4>
+          <ul class="enumeration">
+            <li>
+              <a href="topics/diff.html">
+                Créer un comparateur de document textuels
+              </a>
+            </li>
+            <li>
+              <a href="topics/diffimg.html">
+                Créer un comparateur d'images
+              </a>
+            </li>
+          </ul>
+
+
         </div>
+
 
       </div>
     </div>

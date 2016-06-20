@@ -7,8 +7,9 @@
 @import url(https://fonts.googleapis.com/css?family=Droid+Sans:400,700);
 
 body {
-    font-family: 'Droid Sans', sans-serif;
-    margin-bottom: 64px;
+  font-family: 'Droid Sans', sans-serif;
+  font-weight: 100;
+  margin-bottom: 64px;
 }
 
 
@@ -40,20 +41,21 @@ ul.enumeration > li {
     background-color: #FAFAFA;
     padding: 8px;
     margin-bottom: 4px;
+    border-radius: 4px;
 }
 
-ul.enumeration > li > a {
-    color: #1A2530;
-    text-decoration: none;
-}
+/* ul.enumeration > li > a { */
+/*     color: #880000; */
+/*     text-decoration: none; */
+/* } */
 
-ul.enumeration > li > a:hover {
-    color: #34495E;
-}
+/* ul.enumeration > li > a:hover { */
+/*     color: #34495E; */
+/* } */
 
-ul.enumeration > li > a:visited {
-    color: #334D5C;
-}
+/* ul.enumeration > li > a:visited { */
+/*     color: #990000; */
+/* } */
 
 .topics {
     display: flex;
@@ -70,6 +72,122 @@ ul.enumeration > li > a:visited {
     text-align: center;
 }
 
+.toc > li {
+  display: flex;
+  padding: 8px;
+}
+
+.toc > li > span {
+  flex: 0 0 75%;
+}
+
+.toc > li > a {
+  flex: 0 0 25%;
+  display: block;
+  text-align: center;
+}
+
+.page-layout {
+  padding: 0;
+  margin: 0;
+  display: flex;
+   min-height: 100vh;
+  flex-direction: column;
+}
+
+h1 {
+  margin-top: 32px;
+}
+
+#container {
+  margin-top: 64px;
+  flex: 1;
+}
+
+.header {
+  background-color: #880000;
+  color: #999;
+  padding: 8px;
+}
+
+.std-button {
+  padding: 8px;
+  background-color: #880000;
+  color: #FF8888;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.5s ease;
+}
+
+.header a {
+  padding: 8px;
+  color: #FF8888;
+  text-decoration: none;
+  /* background-color: #AA0000; */
+  margin-right: 12px;
+  transition: all 0.5s ease;
+}
+.std-button:hover,
+.header a:hover {
+  color: #FFF;
+}
+
+#content-blog  {
+  padding: 0;
+  margin-top: 32px;
+}
+
+#content-blog > li {
+  padding: 8px;
+  margin: 8px;
+  list-style-type:none; 
+  display: flex;
+  cursor: pointer;
+  background-color: #F8F8F8;
+}
+
+/* #content-blog > li > * { */
+/*     flex: 0 0 50%; */
+/* } */
+
+#content-blog > li > img {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+#content-blog h3 {
+  margin: 0;
+}
+
+.blogpost {
+  margin: 64px;
+}
+
+.blogpost h1,
+.blogpost h2,
+.blogpost h3,
+.blogpost h4,
+.blogpost h5,
+.blogpost h6
+ {
+   margin-top: 32px;
+  text-align: left;
+}
+
+.blogpost p {
+  text-indent: 50px;
+  text-align: justify;
+  line-height: 1.8em;
+}
+
+pre {
+  background-color: black;
+  color: yellow;
+  padding: 6px;
+  margin: 24px;
+}
 
 @media screen and (max-width: 800px) {
 

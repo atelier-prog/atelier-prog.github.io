@@ -13,16 +13,20 @@
     </div>
     <div id="container">
       <a class="std-button" href="../index.html">Revenir à la page d'accueil</a>
-      <h1>Un livre d'or</h1>
-      <h2>Interaction avec l'utilisateur</h2>
+      <h1>Pierre-Feuille-Ciseaux en résau</h1>
+      <h2>Mon premier MMO !</h2>
       <p>
-        Un livre d'or est un module pour une application web permettant à des gens de
-        laisser un message/avis sur l'application. Même si ce n'est plus particulièrement
-        d'actualité, cet exercice vous propose de réaliser un petit livre d'or, soit une
-        page web où des gens peuvent consulter ou laisser des messages. Vous pouvez biensur
-        allez plus loin en laissant la possibilité de laisser une note et éventuellement
-        paginer les résultats.
+        On vous propose de modifier votre <a href="shifumi.html">Pierre-feuille-ciseaux</a>
+        précédent pour y ajouter une couche multi-joueur. Soit, que quand un joueur arrive,
+        il affiche la liste des personnes attendant une partie. Il en choisi une et la partie
+        respecte le même procédé qu'en mode solo, sauf que avant d'afficher les résultats,
+        il faut attendre que les deux joueurs aient séléctionné leur choix. Vous pouvez
+        évidemment prendre des liberté vis à vis du processus (par exemple, un joueur choisi
+        son arme, et lance le défi, et tant que personne ne l'a solutionné, il attend). 
       </p>
+
+      <p>La partie essentielle de cet exercice est de comprendre comment faire communiquer
+      plusieurs instances d'un même programme entre elles.</p>
 
       <p>
         Pour les systèmes un peu exotique, n'hésitez pas à rédiger un README pour expliquer
@@ -30,16 +34,6 @@
       </p>
 
       <h3>Participations enregistrées</h3>
-      <ul class="enumeration">
-        <li>
-        <a href="https://github.com/FalconPilot/gitwork_falconplt/tree/master/web_initiation/livre_dor">
-          Livre d'or rudimentaire
-        </a>
-        [Rails]
-        <strong>par </strong>
-        <a href="mailto:fpilot.github@gmail.com?subject=A propos de votre participation à l'atelier">FalconPilot"</a>
-        </li>
-      </ul>
       <!-- <ul class="enumeration">
            <li>
            <a href="#lien-de-la-participation">
@@ -55,15 +49,15 @@
       <!-- Commentaires -->
       <div id="disqus_thread"></div>
       <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES * * */
-        var disqus_shortname = 'atelierprog';
-        
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
+       /* * * CONFIGURATION VARIABLES * * */
+       var disqus_shortname = 'atelierprog';
+       
+       /* * * DON'T EDIT BELOW THIS LINE * * */
+       (function() {
+         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+       })();
       </script>
       <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
     </div>
